@@ -72,7 +72,61 @@
                 At NexEvolve, our team is the driving force behind our success. Comprising passionate professionals from diverse backgrounds in technology, design, and innovation, we work collaboratively to bring your vision to life.Together, we are dedicated to making a lasting impact in the digital world.
             </div>
         </div>
-        <div class="container-profile-team flex justify-between">
+
+      <div class="w-full relative">
+      <div class="swiper vertical-slide-carousel swiper-container relative">
+      <div class="swiper-wrapper">
+       <div class="swiper-slide" v-for="(member, index) in teamMembers" :key="index">
+         <div class="swiper-content flex justify-between">
+            <img :src="member.image" alt="team member" class="img-profile-team"/>
+            <div class="swiper-text flex flex-col justify-start">
+                <h3>{{ member.name }}</h3>
+                <h4>{{ member.role }}</h4>
+                <p>{{ member.description }}</p>
+                <div class="social-icons flex space-x-2">
+                    <img src="@/assets/Icon/Icon-ig.png" alt="Instagram"/>
+                    <img src="@/assets/Icon/Icon-in.png" alt="LinkedIn"/>
+                </div>
+            </div>
+         </div>
+       </div>
+       </div>
+      <div class="swiper-pagination"></div>
+
+      </div>
+      </div>
+<!-- 
+        <div class="wrapper-parent">
+            <carousel v-for="(member, index) in teamMembers" :key="index">
+                <slide class="profile-card">
+                    <img :src="member.image" alt="team member" class="profile-image"/>
+                    <h3>{{ member.name }}</h3>
+                    <h4>{{ member.role }}</h4>
+                    <p>{{ member.description }}</p>
+                    <div class="social-icons">
+                        <img src="@/assets/Icon/Icon-ig.png" alt="Instagram"/>
+                        <img src="@/assets/Icon/Icon-in.png" alt="LinkedIn"/>
+                    </div>
+                </slide>
+            </carousel>
+        </div> -->
+
+
+        <!-- <div class="flex overflow-x-auto">
+        <div class="card-profile-team flex justify-between">
+            <img src="@/assets/Image/Img-our-team-2.png" alt="our team 1" class="img-profile-team">
+            <div class="flex flex-col text-left">
+                <h2>Shintya Kim</h2>
+                <h3>Frontend Developer</h3>
+                <p>Shintya is a Frontend Developer who excels in creating responsive and dynamic user interfaces. With a strong background in HTML, CSS, and JavaScript, he focuses on developing intuitive and user-friendly websites.</p>
+                <div class="flex justify-start space-x-2">
+                    <img src="@/assets/Icon/Icon-ig.png" alt="Icon Instagram">
+                    <img src="@/assets/Icon/Icon-in.png" alt="Icon Linked In">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-profile-team flex justify-between">
             <img src="@/assets/Image/Img-our-team-2.png" alt="our team 1" class="img-profile-team">
             <div class="flex flex-col text-left">
                 <h2>Shintya Kim</h2>
@@ -85,17 +139,67 @@
             </div>
         </div>
     </div>
-    <div>
-
     </div>
+    <div> -->
+    </div>
+    <FooterWeb/>
+
     </div>
 </template>
 
 <script>
+import Swiper from 'swiper'
+import 'swiper/swiper-bundle.css'
+import FooterWeb from './FooterWeb.vue';
+
 export default{
     name: 'AboutUs',
-    props: {
-        msg: String
+    components : {
+        FooterWeb,
+    },
+    mounted() {
+    // Inisialisasi Swiper setelah komponen di-mount
+    new Swiper('.vertical-slide-carousel', {
+    loop: true,
+    autoplay: {
+        delay: 1200,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+        type: "bullets",
+    },
+    direction: "horizontal",
+    slidesPerView: 'auto',
+    spaceBetween: 50, 
+    centeredSlides: false,
+    slidesOffsetBefore: -127, 
+});
+    },
+    data () {
+        return {
+            teamMembers: [
+            {
+                name: "Shintya Kim",
+                role: "Frontend Developer",
+                description: "Shintya is a Frontend Developer who excels in creating responsive and dynamic user interfaces. With a strong background in HTML, CSS, and JavaScript, he focuses on developing intuitive and user-friendly websites.",
+                image: require("@/assets/Image/Img-our-team-2.png"),
+            },
+            {
+            name: "Agnes Agata",
+            role: "Canva Designer",
+            description: "Agnes is a creative and innovative Canva Designer. With her skills in crafting visually captivating and memorable designs. She specializes in creating effective visual content for various platforms, from social media to business presentations, ensuring that every message is delivered clearly and powerfully.",
+            image: require("@/assets/Image/Img-our-team-1.png"),
+            },
+            {
+            name: "Aaron Flint",
+            role: "UI/UX Designer",
+            description: "Aaron is a dedicated UI/UX Designer committed to crafting exceptional user experiences. With a deep understanding of design principles and user behavior, she designs interfaces that are not only visually appealing but also highly functional.",
+            image: require("@/assets/Image/Img-our-team-3.png"),
+            },
+        ]
+        }
     }
 }
 </script>
@@ -187,8 +291,6 @@ export default{
     }
 }
 .container-our-team{
-    padding-left: 127px;
-    padding-right: 127px;
     padding-bottom: 100px;
     h1{
         font-size: 24px;
@@ -202,29 +304,68 @@ export default{
         font-size: 18px;
         line-height: 27px;
         font-weight: 400;
+        margin-bottom: 60px;
     }
-    .container-profile-team{
-        background-color: #00414D;
+    .swiper-wrapper {
+        padding-left: 127px;
+        max-width: 920px;
+        width: 100%;
+        margin: 0 auto;
+    .swiper-content{
         width: 920px;
         height: 370px;
+        background-color: #00414D;
         border-radius: 20px;
-        padding: 20px 20px 0px 20px;
-        .img-profile-team{
+    }
+    .img-profile-team{
             width: 363px;
             height: auto;
+            margin-right: 50px;
         }
-        h2{
+        .swiper-text{
+        margin-right: 300px;
+            h3{
             color: #fff;
             font-size: 24px;
             line-height: 32px;
             font-weight: 600;
+            margin-top: 30px;
+            text-align: left;
         }
-        h3{
+        h4{
             color: #E6E6E6;
+            font-size: 18px;
+            line-height: 27px;
+            font-weight: 500;
+            margin-top: 10px;
+            text-align: left;
         }
         p{
             color: #CCCCCC;
+            width: 460px;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            text-align: justify;
         }
+        }
+       
+    }
+
+
+    .swiper-pagination {
+        position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+}
+    .swiper-slide {
+    cursor: pointer;
     }
 }
+
+
+
 </style>

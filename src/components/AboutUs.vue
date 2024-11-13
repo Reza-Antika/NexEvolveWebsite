@@ -215,7 +215,7 @@ export default{
         font-size: 18px;
         line-height: 27px;
         width: 610px;
-        margin-top: 52px;
+        margin-top: 30px;
         font-weight: 400;
     }
 }

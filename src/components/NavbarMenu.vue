@@ -25,14 +25,14 @@ export default{
     const route = useRoute();
 
     const nexEvolveColorClass = computed(() =>{
-      if (route.path === '/aboutus') return 'text-white';
-      if (route.path === '/contactus') return '#002B33';
+      if (route.path === '/aboutus' || route.path === '/contactus') return 'text-white';
+      if (route.path === '/howtoorder') return '#002B33';
       return 'text-white'
     });
 
     const navbarMenuColorClass = computed (() => {
-      if (route.path === '/aboutus') return 'text-white';
-      if (route.path === '/contactus') return '#002B33';
+      if (route.path === '/aboutus' || route.path === '/contactus') return 'text-white';
+      if (route.path === '/howtoorder') return '#002B33';
       return '#002B33';
     });
 

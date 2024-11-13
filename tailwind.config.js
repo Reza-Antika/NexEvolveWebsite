@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       boxShadow: {
         'custom': '4px 4px 20px rgba(0, 0, 0, 0.25)',
+        'small': '4px 4px 10px rgba(0, 0, 0, 0.25)',
       }
     },
   },
